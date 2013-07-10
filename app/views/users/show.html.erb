@@ -1,0 +1,20 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+  <div class="span8">
+    <% if @user.badges.any? %>
+      <h3>Badges (<%= @user.badges.count %>)</h3>
+      <ol class="badges">
+        <%= render @badges %>
+      </ol>
+      <%= will_paginate @badges %>
+    <% end %>
+  </div>
+</div>

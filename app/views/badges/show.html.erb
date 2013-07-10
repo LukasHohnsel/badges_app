@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @badge.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @badge.description %>
+</p>
+
+<p>
+	<b>Given to:</b>
+	<ul>
+	<% @badge.users.each do |user| %>
+	  <li><%= user.name %></li>
+	  <% end %>
+	</ul>
+</p>
+
+
+<%= link_to 'Edit', edit_badge_path(@badge) %> |
+<%= link_to 'Back', badges_path %>
