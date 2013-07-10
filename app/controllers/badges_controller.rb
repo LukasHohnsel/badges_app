@@ -2,7 +2,6 @@ class BadgesController < ApplicationController
   # GET /badges
   # GET /badges.json
   def index
-    @users = User.all
     @users = User.order("name ASC")
     @badges = Badge.all
     

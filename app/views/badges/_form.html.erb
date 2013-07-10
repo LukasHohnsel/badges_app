@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<% if current_user && current_user.admin? %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -19,6 +19,7 @@
     <%= f.label :description %><br />
     <%= f.text_field :description %>
   </div>
+  <% end %>
   <div class="field">
    <%= hidden_field_tag "badge[user_ids][]", nil %>
    <% @users.each do |user| %>

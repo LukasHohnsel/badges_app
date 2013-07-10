@@ -1,12 +1,11 @@
 <h1><u>Badges</u></h1>
-<% if current_user && current_user.admin? %>
 <table border="1" cellspacing="5" cellpadding="5">
   <tr>
     <th>Name</th>
     <th>Description</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th></th><% if current_user && current_user.admin? %>
+    <th></th><% end %>
   </tr>
 
 <% @badges.each do |badge| %>
@@ -14,21 +13,17 @@
     <td><%= badge.name %></td>
     <td><%= badge.description %></td>
     <td><%= link_to 'Show', badge %></td>
-    <td><%= link_to 'Edit', edit_badge_path(badge) %></td>
+    <td><%= link_to 'Give', edit_badge_path(badge) %></td>
+    <% if current_user && current_user.admin? %>
     <td><%= link_to 'Destroy', badge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
+<% if current_user && current_user.admin? %>
 <%= link_to 'New Badge', new_badge_path %>
 <% end %>
 
-<div class="field">
-   <%= hidden_field_tag "badge[user_ids][]", nil %>
-   <% @users.each do |user| %>
-   <%= check_box_tag "badge[user_ids][]", user.id, @badge.user_ids.include?(user.id), id: dom_id(user) %>
-   <%= label_tag dom_id(user), user.name %><br/>
-   <% end %>
-  </div>
+
