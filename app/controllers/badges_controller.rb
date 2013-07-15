@@ -35,7 +35,7 @@ class BadgesController < ApplicationController
 
   # GET /badges/1/edit
   def edit
-    @users =User.all
+    @users = User.order("name ASC")
     @badge = Badge.find(params[:id])
   end
 
