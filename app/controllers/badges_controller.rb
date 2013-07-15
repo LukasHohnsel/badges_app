@@ -3,7 +3,7 @@ class BadgesController < ApplicationController
   # GET /badges.json
   def index
     @users = User.order("name ASC")
-    @badges = Badge.all
+    @badges = Badge.order("name")
     
     respond_to do |format|
       format.html # index.html.erb
